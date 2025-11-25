@@ -1,0 +1,5 @@
+{
+  "name": "DreamSnake AI",
+  "description": "A visually stunning, 'dreamy' take on the classic Snake game. Features glowing aesthetics and an AI-powered Theme Generator that lets you create custom visual experiences based on your dreams or keywords using Google Gemini.",
+  "requestFramePermissions": []
+}
