@@ -1,9 +1,16 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { Theme, ThemeSchema } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Ensure we don't crash if process.env.API_KEY is undefined (e.g. during dev without env vars)
+const apiKey = process.env.API_KEY || '';
+const ai = new GoogleGenAI({ apiKey });
 
 export const generateThemeFromPrompt = async (prompt: string): Promise<Theme | null> => {
+  if (!apiKey) {
+    console.warn("API Key is missing. Please set API_KEY in your environment variables.");
+    return null;
+  }
+
   try {
     const response = await ai.models.generateContent({
       model: 'gemini-2.5-flash',
